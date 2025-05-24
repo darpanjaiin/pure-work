@@ -1,0 +1,23 @@
+{
+  "personalInfo": {
+    "fullName": "Darpan",
+    "jobTitle": "Chartered Accountant",
+    "bio": "Investment Banker",
+    "location": ""
+  },
+  "contactInfo": {
+    "email": "",
+    "phone": "",
+    "linkedin": "",
+    "github": ""
+  },
+  "education": [],
+  "experience": [],
+  "skills": [],
+  "metadata": {
+    "subdomain": "darpan",
+    "createdAt": "2025-05-24T08:53:56.067Z",
+    "updatedAt": "2025-05-24T08:53:56.067Z",
+    "version": "1.0"
+  }
+}

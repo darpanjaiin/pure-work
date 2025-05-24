@@ -78,7 +78,7 @@ async function handlePublish() {
       // Update the site URL in the nav
       const siteUrlElement = document.querySelector('.site-url');
       if (siteUrlElement) {
-        siteUrlElement.textContent = `${result.subdomain}.pureview.dev`;
+        siteUrlElement.textContent = `${result.subdomain}.pauseforaminute.xyz`;
       }
       
       // Update status
@@ -350,9 +350,9 @@ function updateSiteUrl() {
       const slug = name.toLowerCase()
         .replace(/[^a-z0-9\s]/g, '')
         .replace(/\s+/g, '-');
-      siteUrl.textContent = `${slug}.pureview.dev`;
+      siteUrl.textContent = `${slug}.pauseforaminute.xyz`;
     } else {
-      siteUrl.textContent = 'yourname.pureview.dev';
+      siteUrl.textContent = 'yourname.pauseforaminute.xyz';
     }
   }
 }

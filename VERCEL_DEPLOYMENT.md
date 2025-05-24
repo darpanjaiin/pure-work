@@ -31,8 +31,8 @@ NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_dHJ1c3Rpbmctd2FzcC0zNy5jbGVyay5hY2NvdW
 CLERK_SECRET_KEY=your_clerk_secret_key
 
 # Domain Configuration
-NEXT_PUBLIC_DOMAIN=pureview.dev
-NEXT_PUBLIC_APP_URL=https://pureview.dev
+NEXT_PUBLIC_DOMAIN=pauseforaminute.xyz
+NEXT_PUBLIC_APP_URL=https://pauseforaminute.xyz
 ```
 
 ### Step 3: Deploy to Vercel
