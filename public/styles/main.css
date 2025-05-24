@@ -98,36 +98,96 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: #fff;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  padding: 2rem;
 }
+
+.hero-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
 .hero-title {
-  font-size: 2.6rem;
+  font-size: 3.2rem;
   font-weight: 700;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1rem;
   color: #111;
-  letter-spacing: -1px;
+  letter-spacing: -1.5px;
   line-height: 1.1;
 }
+
+.hero-subtitle {
+  font-size: 1.3rem;
+  color: #666;
+  margin-bottom: 2.5rem;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
 .cta-btn {
-  padding: 1.1rem 2.8rem;
-  font-size: 1.15rem;
+  padding: 1.2rem 3rem;
+  font-size: 1.2rem;
   font-weight: 600;
   border: none;
   border-radius: 2rem;
-  background: #111;
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
   color: #fff;
   cursor: pointer;
-  transition: background 0.18s, transform 0.12s;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  transition: all 0.18s ease;
+  box-shadow: 0 4px 20px rgba(37, 99, 235, 0.2);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 3rem;
 }
+
 .cta-btn:hover:not(:disabled) {
-  background: #222;
-  transform: translateY(-2px) scale(1.03);
+  background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(37, 99, 235, 0.3);
 }
+
 .cta-btn:disabled {
   background: #666;
   cursor: not-allowed;
   transform: none;
+  opacity: 0.6;
+}
+
+.btn-icon {
+  font-size: 1.1em;
+}
+
+.features {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  color: #666;
+  font-weight: 500;
+}
+
+.feature-icon {
+  font-size: 1.2em;
+}
+
+#loading {
+  color: #2563eb;
+  font-weight: 500;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
 }
 
 @media (max-width: 900px) {
@@ -137,7 +197,28 @@ body {
     padding: 0 12px;
   }
   .hero-title {
-    font-size: 2.1rem;
+    font-size: 2.5rem;
+  }
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+  .features {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+  .cta-btn {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+  }
+  .minimal-hero {
+    padding: 1rem;
   }
 }
 

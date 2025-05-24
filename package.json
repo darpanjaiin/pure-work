@@ -4,6 +4,7 @@
   "description": "Minimalistic SaaS portfolio website builder with subdomain routing.",
   "main": "index.js",
   "scripts": {
+    "setup": "node setup.js",
     "start": "node server/index.js",
     "dev": "nodemon server/index.js",
     "static": "npx serve public -l 3000",

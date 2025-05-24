@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PureWork Portfolio</title>
+  <title>PureWork - Create Your Professional Portfolio</title>
   <link rel="stylesheet" href="styles/main.css">
   <script
     async
@@ -15,10 +15,36 @@
 </head>
 <body>
   <main class="minimal-hero">
-    <h1 class="hero-title">Get your personal website in 3 minutes</h1>
-    <button class="cta-btn" id="create-website-btn">Create website</button>
+    <div class="hero-content">
+      <h1 class="hero-title">Create Your Professional Portfolio in Minutes</h1>
+      <p class="hero-subtitle">Beautiful, responsive portfolio websites that help you stand out</p>
+      <button class="cta-btn" id="create-website-btn">
+        <span class="btn-icon">✨</span>
+        Create My Portfolio
+      </button>
+      
+      <div class="features">
+        <div class="feature">
+          <span class="feature-icon">⚡</span>
+          <span>Ready in 3 minutes</span>
+        </div>
+        <div class="feature">
+          <span class="feature-icon">📱</span>
+          <span>Mobile responsive</span>
+        </div>
+        <div class="feature">
+          <span class="feature-icon">🌐</span>
+          <span>Custom subdomain</span>
+        </div>
+      </div>
+    </div>
+    
     <div id="clerk-auth" style="display:none; margin-top:2rem;"></div>
+    <div id="loading" style="display:none; text-align:center; margin-top:2rem;">
+      <p>🚀 Loading your portfolio editor...</p>
+    </div>
   </main>
+  
   <script src="src/auth.js"></script>
 </body>
 </html> 
