@@ -59,8 +59,8 @@ async function handlePublish() {
     
     console.log('📤 Publishing portfolio data:', portfolioData);
     
-    // Send to backend
-    const response = await fetch('http://localhost:54121/api/portfolio/save', {
+    // Send to backend (Vercel API)
+    const response = await fetch('/api/portfolio/save', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -115,7 +115,7 @@ async function handlePublish() {
 function handlePreview() {
   // Open a new window with the live portfolio
   if (currentSubdomain) {
-    const portfolioUrl = `http://localhost:54121/${currentSubdomain}`;
+    const portfolioUrl = `/${currentSubdomain}`;
     window.open(portfolioUrl, '_blank');
   } else {
     alert('Please publish your portfolio first to see the live preview.');
