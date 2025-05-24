@@ -14,11 +14,14 @@ export default async function handler(req, res) {
   const domain = process.env.NEXT_PUBLIC_DOMAIN || 'pauseforaminute.xyz';
 
   res.json({
-    message: 'Test API endpoint working!',
+    success: true,
+    message: 'API is working! 🎉',
     host: host,
     isDevelopment: isDevelopment,
     domain: domain,
     environment: process.env.NODE_ENV || 'unknown',
-    timestamp: new Date().toISOString()
+    timestamp: new Date().toISOString(),
+    headers: req.headers,
+    method: req.method
   });
 } 

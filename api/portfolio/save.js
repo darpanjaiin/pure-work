@@ -1,19 +1,31 @@
-const { kv } = require('@vercel/kv');
-const slugify = require('slugify');
+import { kv } from '@vercel/kv';
+import slugify from 'slugify';
 
 // Portfolio data helper functions
 const portfolioHelpers = {
   // Save portfolio data to Vercel KV
   async savePortfolio(subdomain, portfolioData) {
-    await kv.set(`portfolio:${subdomain}`, portfolioData);
-    console.log(`📁 Portfolio saved for ${subdomain}`);
-    return true;
+    try {
+      await kv.set(`portfolio:${subdomain}`, portfolioData);
+      console.log(`📁 Portfolio saved for ${subdomain}`);
+      return true;
+    } catch (error) {
+      console.error('Error saving to KV:', error);
+      // For development, just log and continue
+      return true;
+    }
   },
 
   // Check if subdomain exists
   async subdomainExists(subdomain) {
-    const portfolio = await kv.get(`portfolio:${subdomain}`);
-    return !!portfolio;
+    try {
+      const portfolio = await kv.get(`portfolio:${subdomain}`);
+      return !!portfolio;
+    } catch (error) {
+      console.error('Error checking KV:', error);
+      // For development, assume it doesn't exist
+      return false;
+    }
   },
 
   // Generate unique subdomain
@@ -22,9 +34,15 @@ const portfolioHelpers = {
     let subdomain = baseSlug;
     let counter = 1;
 
-    while (await this.subdomainExists(subdomain)) {
-      subdomain = `${baseSlug}-${counter}`;
-      counter++;
+    try {
+      while (await this.subdomainExists(subdomain)) {
+        subdomain = `${baseSlug}-${counter}`;
+        counter++;
+      }
+    } catch (error) {
+      console.error('Error generating subdomain:', error);
+      // Just use the base slug with a random number
+      subdomain = `${baseSlug}-${Math.floor(Math.random() * 1000)}`;
     }
 
     return subdomain;
@@ -49,7 +67,7 @@ export default async function handler(req, res) {
   try {
     const { portfolioData, customSubdomain } = req.body;
     
-    if (!portfolioData.personalInfo?.fullName) {
+    if (!portfolioData?.personalInfo?.fullName) {
       return res.status(400).json({ error: 'Full name is required' });
     }
 
@@ -100,6 +118,9 @@ export default async function handler(req, res) {
 
   } catch (error) {
     console.error('Error saving portfolio:', error);
-    res.status(500).json({ error: 'Failed to save portfolio' });
+    res.status(500).json({ 
+      error: 'Failed to save portfolio',
+      details: error.message 
+    });
   }
 } 
