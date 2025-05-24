@@ -75,16 +75,26 @@ export default async function handler(req, res) {
     // Save portfolio
     await portfolioHelpers.savePortfolio(subdomain, portfolioData);
 
-    // Determine the domain based on environment
+    // Determine the correct URL based on environment
     const host = req.headers.host;
-    const isDevelopment = host?.includes('localhost') || host?.includes('127.0.0.1');
+    const isDevelopment = host?.includes('localhost') || host?.includes('127.0.0.1') || host?.includes('local');
     const domain = process.env.NEXT_PUBLIC_DOMAIN || 'pauseforaminute.xyz';
-    const baseUrl = `https://${subdomain}.${domain}`;
+    
+    let portfolioUrl;
+    if (isDevelopment) {
+      // For local development, use localhost path-based routing
+      portfolioUrl = `http://localhost:3000/${subdomain}`;
+    } else {
+      // For production, use subdomain routing
+      portfolioUrl = `https://${subdomain}.${domain}`;
+    }
+
+    console.log(`🌐 Generated portfolio URL: ${portfolioUrl} (isDev: ${isDevelopment}, host: ${host})`);
 
     res.json({
       success: true,
       subdomain,
-      url: `${baseUrl}`,
+      url: portfolioUrl,
       message: 'Portfolio saved successfully!'
     });
 

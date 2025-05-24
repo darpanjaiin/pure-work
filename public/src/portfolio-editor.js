@@ -57,30 +57,12 @@ async function handlePublish() {
       return;
     }
     
-    console.log('📤 Publishing portfolio data:', portfolioData);
+        console.log('📤 Publishing portfolio data:', portfolioData);        // Send to backend (Vercel API)    console.log('🌐 Current host:', window.location.host);    console.log('🔗 Making request to:', '/api/portfolio/save');        const response = await fetch('/api/portfolio/save', {      method: 'POST',      headers: {        'Content-Type': 'application/json',      },      body: JSON.stringify({        portfolioData: portfolioData      })    });
     
-    // Send to backend (Vercel API)
-    const response = await fetch('/api/portfolio/save', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        portfolioData: portfolioData
-      })
-    });
-    
-    const result = await response.json();
-    
-    if (response.ok) {
+        const result = await response.json();    console.log('📥 API Response:', result);    console.log('🌐 Returned URL:', result.url);        if (response.ok) {
       currentSubdomain = result.subdomain;
       
-      // Update the site URL in the nav
-      const siteUrlElement = document.querySelector('.site-url');
-      if (siteUrlElement) {
-        const domain = 'pauseforaminute.xyz'; // or get from env if you bundle it
-        siteUrlElement.textContent = `${result.subdomain}.${domain}`;
-      }
+            // Update the site URL in the nav      const siteUrlElement = document.querySelector('.site-url');      if (siteUrlElement) {        const domain = 'pauseforaminute.xyz'; // Production domain        siteUrlElement.textContent = `${result.subdomain}.${domain}`;      }
       
       // Update status
       const statusElement = document.querySelector('.site-status');
@@ -113,15 +95,7 @@ async function handlePublish() {
   }
 }
 
-function handlePreview() {
-  // Open a new window with the live portfolio
-  if (currentSubdomain) {
-    const portfolioUrl = `https://${currentSubdomain}.pauseforaminute.xyz`;
-    window.open(portfolioUrl, '_blank');
-  } else {
-    alert('Please publish your portfolio first to see the live preview.');
-  }
-}
+function handlePreview() {  // Open a new window with the live portfolio  if (currentSubdomain) {    const domain = 'pauseforaminute.xyz'; // Production domain    const portfolioUrl = `https://${currentSubdomain}.${domain}`;    console.log('🔗 Opening preview URL:', portfolioUrl);    window.open(portfolioUrl, '_blank');  } else {    alert('Please publish your portfolio first to see the live preview.');  }}
 
 function collectPortfolioData() {
   // Personal Information

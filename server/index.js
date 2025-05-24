@@ -118,15 +118,7 @@ app.post('/api/portfolio/save', async (req, res) => {
       version: '1.0'
     };
 
-    // Save portfolio
-    await portfolioHelpers.savePortfolio(subdomain, portfolioData);
-
-    res.json({
-      success: true,
-      subdomain,
-      url: `http://localhost:${PORT}/${subdomain}`,
-      message: 'Portfolio saved successfully!'
-    });
+        // Save portfolio    await portfolioHelpers.savePortfolio(subdomain, portfolioData);    // Determine the correct URL based on environment    const host = req.get('host');    const isDevelopment = host?.includes('localhost') || host?.includes('127.0.0.1');    const domain = process.env.NEXT_PUBLIC_DOMAIN || 'pauseforaminute.xyz';        let portfolioUrl;    if (isDevelopment) {      // For local development, use localhost path-based routing      portfolioUrl = `http://localhost:${PORT}/${subdomain}`;    } else {      // For production, use subdomain routing      portfolioUrl = `https://${subdomain}.${domain}`;    }    console.log(`🌐 Generated portfolio URL: ${portfolioUrl} (isDev: ${isDevelopment}, host: ${host})`);    res.json({      success: true,      subdomain,      url: portfolioUrl,      message: 'Portfolio saved successfully!'    });
 
   } catch (error) {
     console.error('Error saving portfolio:', error);
