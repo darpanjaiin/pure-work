@@ -59,10 +59,15 @@ async function handlePublish() {
     
     console.log('📤 Publishing portfolio data:', portfolioData);
     console.log('🌐 Current host:', window.location.host);
-    console.log('🔗 Making request to:', '/api/portfolio/save');
+    console.log('🌐 Current origin:', window.location.origin);
+    console.log('🌐 Full URL:', window.location.href);
+    
+    // Force the request to go to the current domain
+    const apiUrl = `${window.location.origin}/api/portfolio/save`;
+    console.log('🔗 Making request to:', apiUrl);
     
     // Send to backend (Vercel API)
-    const response = await fetch('/api/portfolio/save', {
+    const response = await fetch(apiUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
