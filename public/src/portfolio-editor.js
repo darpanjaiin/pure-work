@@ -57,12 +57,36 @@ async function handlePublish() {
       return;
     }
     
-        console.log('📤 Publishing portfolio data:', portfolioData);        // Send to backend (Vercel API)    console.log('🌐 Current host:', window.location.host);    console.log('🔗 Making request to:', '/api/portfolio/save');        const response = await fetch('/api/portfolio/save', {      method: 'POST',      headers: {        'Content-Type': 'application/json',      },      body: JSON.stringify({        portfolioData: portfolioData      })    });
+    console.log('📤 Publishing portfolio data:', portfolioData);
+    console.log('🌐 Current host:', window.location.host);
+    console.log('🔗 Making request to:', '/api/portfolio/save');
     
-        const result = await response.json();    console.log('📥 API Response:', result);    console.log('🌐 Returned URL:', result.url);        if (response.ok) {
+    // Send to backend (Vercel API)
+    const response = await fetch('/api/portfolio/save', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        portfolioData: portfolioData
+      })
+    });
+    
+    const result = await response.json();
+    console.log('📥 API Response:', result);
+    console.log('🌐 Returned URL:', result.url);
+    console.log('🔍 Response status:', response.status);
+    console.log('🔍 Response OK:', response.ok);
+    
+    if (response.ok) {
       currentSubdomain = result.subdomain;
       
-            // Update the site URL in the nav      const siteUrlElement = document.querySelector('.site-url');      if (siteUrlElement) {        const domain = 'pauseforaminute.xyz'; // Production domain        siteUrlElement.textContent = `${result.subdomain}.${domain}`;      }
+      // Update the site URL in the nav
+      const siteUrlElement = document.querySelector('.site-url');
+      if (siteUrlElement) {
+        const domain = 'pauseforaminute.xyz';
+        siteUrlElement.textContent = `${result.subdomain}.${domain}`;
+      }
       
       // Update status
       const statusElement = document.querySelector('.site-status');
@@ -95,7 +119,17 @@ async function handlePublish() {
   }
 }
 
-function handlePreview() {  // Open a new window with the live portfolio  if (currentSubdomain) {    const domain = 'pauseforaminute.xyz'; // Production domain    const portfolioUrl = `https://${currentSubdomain}.${domain}`;    console.log('🔗 Opening preview URL:', portfolioUrl);    window.open(portfolioUrl, '_blank');  } else {    alert('Please publish your portfolio first to see the live preview.');  }}
+function handlePreview() {
+  // Open a new window with the live portfolio
+  if (currentSubdomain) {
+    const domain = 'pauseforaminute.xyz';
+    const portfolioUrl = `https://${currentSubdomain}.${domain}`;
+    console.log('🔗 Opening preview URL:', portfolioUrl);
+    window.open(portfolioUrl, '_blank');
+  } else {
+    alert('Please publish your portfolio first to see the live preview.');
+  }
+}
 
 function collectPortfolioData() {
   // Personal Information
@@ -325,7 +359,7 @@ function updateSiteUrl() {
       const slug = name.toLowerCase()
         .replace(/[^a-z0-9\s]/g, '')
         .replace(/\s+/g, '-');
-      const domain = 'pauseforaminute.xyz'; // or get from env if you bundle it
+      const domain = 'pauseforaminute.xyz';
       siteUrl.textContent = `${slug}.${domain}`;
     } else {
       siteUrl.textContent = 'yourname.pauseforaminute.xyz';
