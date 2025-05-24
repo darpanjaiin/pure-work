@@ -1,0 +1,17 @@
+{
+  "name": "purework-portfolio",
+  "version": "1.0.0",
+  "description": "Minimalistic SaaS portfolio website builder.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "npx serve public -l 3000",
+    "dev": "npx serve public -l 3000",
+    "build": "echo 'No build step needed for static HTML/CSS/JS'"
+  },
+  "keywords": ["portfolio", "saas", "website-builder", "minimal"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "serve": "^14.2.0"
+  }
+} 

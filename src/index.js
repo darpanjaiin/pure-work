@@ -1,0 +1,1 @@
+console.log('PureWork Portfolio App Initialized'); 
