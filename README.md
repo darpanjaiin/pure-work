@@ -56,7 +56,7 @@ A minimalistic SaaS platform for job seekers and personal brand creators to buil
    - Includes Vercel KV database setup and subdomain configuration
 
 2. **Configure Domain:**
-   - Set up `pureview.dev` with wildcard subdomain support
+   - Set up `pauseforaminute.xyz` with wildcard subdomain support
    - Enable HTTPS for all subdomains automatically
 
 ## Tech Stack

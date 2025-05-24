@@ -78,9 +78,8 @@ export default async function handler(req, res) {
     // Determine the domain based on environment
     const host = req.headers.host;
     const isDevelopment = host?.includes('localhost') || host?.includes('127.0.0.1');
-    const baseUrl = isDevelopment
-      ? `http://${host}`
-      : `https://${subdomain}.pauseforaminute.xyz`;
+    const domain = process.env.NEXT_PUBLIC_DOMAIN || 'pauseforaminute.xyz';
+    const baseUrl = `https://${subdomain}.${domain}`;
 
     res.json({
       success: true,

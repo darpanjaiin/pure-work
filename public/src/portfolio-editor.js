@@ -78,7 +78,8 @@ async function handlePublish() {
       // Update the site URL in the nav
       const siteUrlElement = document.querySelector('.site-url');
       if (siteUrlElement) {
-        siteUrlElement.textContent = `${result.subdomain}.pauseforaminute.xyz`;
+        const domain = 'pauseforaminute.xyz'; // or get from env if you bundle it
+        siteUrlElement.textContent = `${result.subdomain}.${domain}`;
       }
       
       // Update status
@@ -115,7 +116,7 @@ async function handlePublish() {
 function handlePreview() {
   // Open a new window with the live portfolio
   if (currentSubdomain) {
-    const portfolioUrl = `/${currentSubdomain}`;
+    const portfolioUrl = `https://${currentSubdomain}.pauseforaminute.xyz`;
     window.open(portfolioUrl, '_blank');
   } else {
     alert('Please publish your portfolio first to see the live preview.');
@@ -350,7 +351,8 @@ function updateSiteUrl() {
       const slug = name.toLowerCase()
         .replace(/[^a-z0-9\s]/g, '')
         .replace(/\s+/g, '-');
-      siteUrl.textContent = `${slug}.pauseforaminute.xyz`;
+      const domain = 'pauseforaminute.xyz'; // or get from env if you bundle it
+      siteUrl.textContent = `${slug}.${domain}`;
     } else {
       siteUrl.textContent = 'yourname.pauseforaminute.xyz';
     }

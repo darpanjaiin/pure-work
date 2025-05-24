@@ -1,0 +1,23 @@
+{
+  "personalInfo": {
+    "fullName": "Darpan Jain",
+    "jobTitle": "Chartered Accountant",
+    "bio": "Pune, India",
+    "location": "K"
+  },
+  "contactInfo": {
+    "email": "",
+    "phone": "",
+    "linkedin": "",
+    "github": ""
+  },
+  "education": [],
+  "experience": [],
+  "skills": [],
+  "metadata": {
+    "subdomain": "darpan-jain-2",
+    "createdAt": "2025-05-24T10:19:51.994Z",
+    "updatedAt": "2025-05-24T10:19:51.994Z",
+    "version": "1.0"
+  }
+}

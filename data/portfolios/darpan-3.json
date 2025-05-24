@@ -1,0 +1,23 @@
+{
+  "personalInfo": {
+    "fullName": "Darpan",
+    "jobTitle": "Jain",
+    "bio": "Darpan",
+    "location": "Jain"
+  },
+  "contactInfo": {
+    "email": "",
+    "phone": "",
+    "linkedin": "",
+    "github": ""
+  },
+  "education": [],
+  "experience": [],
+  "skills": [],
+  "metadata": {
+    "subdomain": "darpan-3",
+    "createdAt": "2025-05-24T10:15:09.762Z",
+    "updatedAt": "2025-05-24T10:15:09.762Z",
+    "version": "1.0"
+  }
+}

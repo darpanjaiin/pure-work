@@ -43,8 +43,8 @@ NEXT_PUBLIC_APP_URL=https://pauseforaminute.xyz
 
 ### Step 4: Configure Custom Domain & Subdomains
 
-1. **Add Domain**: In Vercel project settings, add `pureview.dev`
-2. **Wildcard Subdomain**: Add `*.pureview.dev` for portfolio subdomains
+1. **Add Domain**: In Vercel project settings, add `pauseforaminute.xyz`
+2. **Wildcard Subdomain**: Add `*.pauseforaminute.xyz` for portfolio subdomains
 3. **DNS Configuration**: Point your domain's DNS to Vercel:
    ```
    A Record: @ → 76.76.19.19
@@ -53,9 +53,9 @@ NEXT_PUBLIC_APP_URL=https://pauseforaminute.xyz
 
 ### Step 5: Test Your Deployment
 
-1. Visit `https://pureview.dev` - should show your landing page
+1. Visit `https://pauseforaminute.xyz` - should show your landing page
 2. Create a portfolio and publish it
-3. Visit `https://[subdomain].pureview.dev` - should show the portfolio
+3. Visit `https://[subdomain].pauseforaminute.xyz` - should show the portfolio
 
 ### Features After Deployment
 
