@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio Editor - PureWork</title>
   <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/editor.css">
   <script
     async
     crossorigin="anonymous"
@@ -14,14 +15,212 @@
   ></script>
 </head>
 <body>
-  <main class="editor-main">
-    <div class="editor-header">
-      <h1 class="editor-title">Portfolio Editor</h1>
-      <button id="logout-btn" class="logout-btn">Logout</button>
+  <!-- Top Navigation -->
+  <div class="editor-nav">
+    <div class="editor-nav-left">
+      <h1 class="editor-logo">PureWork</h1>
     </div>
-    <div class="editor-placeholder">[Editor UI will go here]</div>
-    <div id="user-info" class="user-info"></div>
-  </main>
+    <div class="editor-nav-center">
+      <span class="site-status">✏️ Editing</span>
+      <span class="site-url">yourname.pureview.dev</span>
+    </div>
+    <div class="editor-nav-right">
+      <button class="btn-preview">Preview</button>
+      <button class="btn-publish">Publish</button>
+      <button id="logout-btn" class="btn-logout">Logout</button>
+    </div>
+  </div>
+
+  <!-- Main Editor Layout -->
+  <div class="editor-container">
+    <!-- Left Panel - Form Inputs -->
+    <div class="editor-panel-left">
+      <div class="panel-header">
+        <h2>Portfolio Information</h2>
+        <p>Fill in your details to create your professional portfolio</p>
+      </div>
+      
+      <div class="form-sections">
+        <!-- Personal Information -->
+        <div class="form-section">
+          <h3>👤 Personal Information</h3>
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" id="fullName" placeholder="John Doe" />
+          </div>
+          <div class="form-group">
+            <label>Professional Title</label>
+            <input type="text" id="jobTitle" placeholder="Software Engineer" />
+          </div>
+          <div class="form-group">
+            <label>Bio / About</label>
+            <textarea id="bio" placeholder="Brief description about yourself and your expertise..." rows="4"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Location</label>
+            <input type="text" id="location" placeholder="New York, NY" />
+          </div>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="form-section">
+          <h3>📧 Contact Information</h3>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="email" placeholder="john@example.com" />
+          </div>
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="tel" id="phone" placeholder="+1 (555) 123-4567" />
+          </div>
+          <div class="form-group">
+            <label>LinkedIn</label>
+            <input type="url" id="linkedin" placeholder="https://linkedin.com/in/johndoe" />
+          </div>
+          <div class="form-group">
+            <label>GitHub</label>
+            <input type="url" id="github" placeholder="https://github.com/johndoe" />
+          </div>
+        </div>
+
+        <!-- Education -->
+        <div class="form-section">
+          <h3>🎓 Education</h3>
+          <div id="education-list">
+            <div class="education-item">
+              <div class="form-group">
+                <label>School/University</label>
+                <input type="text" class="edu-school" placeholder="Harvard University" />
+              </div>
+              <div class="form-group">
+                <label>Degree</label>
+                <input type="text" class="edu-degree" placeholder="Bachelor of Computer Science" />
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Start Year</label>
+                  <input type="number" class="edu-start" placeholder="2018" />
+                </div>
+                <div class="form-group">
+                  <label>End Year</label>
+                  <input type="number" class="edu-end" placeholder="2022" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <button type="button" class="btn-add" onclick="addEducation()">+ Add Education</button>
+        </div>
+
+        <!-- Work Experience -->
+        <div class="form-section">
+          <h3>💼 Work Experience</h3>
+          <div id="experience-list">
+            <div class="experience-item">
+              <div class="form-group">
+                <label>Company</label>
+                <input type="text" class="exp-company" placeholder="Google" />
+              </div>
+              <div class="form-group">
+                <label>Position</label>
+                <input type="text" class="exp-position" placeholder="Senior Software Engineer" />
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Start Date</label>
+                  <input type="month" class="exp-start" />
+                </div>
+                <div class="form-group">
+                  <label>End Date</label>
+                  <input type="month" class="exp-end" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Description</label>
+                <textarea class="exp-description" placeholder="Key achievements and responsibilities..." rows="3"></textarea>
+              </div>
+            </div>
+          </div>
+          <button type="button" class="btn-add" onclick="addExperience()">+ Add Experience</button>
+        </div>
+
+        <!-- Skills -->
+        <div class="form-section">
+          <h3>⚡ Skills</h3>
+          <div class="form-group">
+            <label>Skills (comma separated)</label>
+            <textarea id="skills" placeholder="JavaScript, React, Node.js, Python, SQL, AWS..." rows="3"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Panel - Live Preview -->
+    <div class="editor-panel-right">
+      <div class="preview-header">
+        <h3>Live Preview</h3>
+        <div class="preview-controls">
+          <button class="preview-btn active" data-device="desktop">💻</button>
+          <button class="preview-btn" data-device="tablet">📱</button>
+          <button class="preview-btn" data-device="mobile">📱</button>
+        </div>
+      </div>
+      
+      <div class="preview-container">
+        <div class="preview-frame" id="preview-frame">
+          <!-- Live preview will be injected here -->
+          <div class="portfolio-preview">
+            <header class="preview-header-section">
+              <div class="preview-avatar">
+                <div class="avatar-placeholder">👤</div>
+              </div>
+              <h1 class="preview-name">Your Name</h1>
+              <p class="preview-title">Your Professional Title</p>
+              <p class="preview-bio">Your bio will appear here...</p>
+              <div class="preview-contact">
+                <a href="#" class="contact-item">📧 Email</a>
+                <a href="#" class="contact-item">📱 Phone</a>
+                <a href="#" class="contact-item">💼 LinkedIn</a>
+                <a href="#" class="contact-item">💻 GitHub</a>
+              </div>
+            </header>
+
+            <section class="preview-section">
+              <h2>Education</h2>
+              <div class="preview-education">
+                <div class="edu-item">
+                  <h3>Your Degree</h3>
+                  <p>Your School • Year - Year</p>
+                </div>
+              </div>
+            </section>
+
+            <section class="preview-section">
+              <h2>Experience</h2>
+              <div class="preview-experience">
+                <div class="exp-item">
+                  <h3>Your Position</h3>
+                  <p class="exp-company">Your Company • Date - Date</p>
+                  <p class="exp-desc">Your experience description...</p>
+                </div>
+              </div>
+            </section>
+
+            <section class="preview-section">
+              <h2>Skills</h2>
+              <div class="preview-skills">
+                <span class="skill-tag">Your skills will appear here</span>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- User Info (Hidden by default) -->
+  <div id="user-info" style="display: none;"></div>
+
   <script src="src/editor.js"></script>
+  <script src="src/portfolio-editor.js"></script>
 </body>
 </html> 

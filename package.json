@@ -1,17 +1,25 @@
 {
   "name": "purework-portfolio",
   "version": "1.0.0",
-  "description": "Minimalistic SaaS portfolio website builder.",
-  "main": "src/index.js",
+  "description": "Minimalistic SaaS portfolio website builder with subdomain routing.",
+  "main": "server/index.js",
   "scripts": {
-    "start": "npx serve public -l 3000",
-    "dev": "npx serve public -l 3000",
+    "start": "node server/index.js",
+    "dev": "nodemon server/index.js",
+    "static": "npx serve public -l 3000",
     "build": "echo 'No build step needed for static HTML/CSS/JS'"
   },
-  "keywords": ["portfolio", "saas", "website-builder", "minimal"],
+  "keywords": ["portfolio", "saas", "website-builder", "minimal", "subdomain"],
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "fs-extra": "^11.1.1",
+    "slugify": "^1.6.6",
     "serve": "^14.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
   }
 } 

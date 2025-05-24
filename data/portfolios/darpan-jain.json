@@ -1,0 +1,27 @@
+{
+  "personalInfo": {
+    "fullName": "Darpan Jain",
+    "jobTitle": "Chartered Accountant",
+    "bio": "Investment Banker at Mango Advisors",
+    "location": "Pune, India"
+  },
+  "contactInfo": {
+    "email": "darpanjaindsj@gmail.com",
+    "phone": "899915037",
+    "linkedin": "https://www.linkedin.com/in/cadarpanjain/",
+    "github": ""
+  },
+  "education": [],
+  "experience": [],
+  "skills": [
+    "MS Excel",
+    "Financial Analysis",
+    "Modelling"
+  ],
+  "metadata": {
+    "subdomain": "darpan-jain",
+    "createdAt": "2025-05-24T08:00:06.630Z",
+    "updatedAt": "2025-05-24T08:00:06.630Z",
+    "version": "1.0"
+  }
+}
